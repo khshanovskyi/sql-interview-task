@@ -8,9 +8,9 @@ services:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
       POSTGRES_DB: postgres
-      APP_NUM_TRANSACTIONS: "1000000"
+      APP_NUM_TRANSACTIONS: "10000000"
     ports:
-      - "5433:5432"
+      - "5435:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./init-scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
