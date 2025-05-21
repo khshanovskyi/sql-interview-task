@@ -98,7 +98,7 @@ DO $$
 DECLARE
     first_names TEXT[] := ARRAY['John', 'Jane', 'Alex', 'Emily', 'Michael', 'Sarah', 'David', 'Olivia', 'Daniel', 'Emma'];
     last_names TEXT[] := ARRAY['Smith', 'Johnson', 'Brown', 'Williams', 'Jones', 'Miller', 'Davis', 'Garcia', 'Martinez', 'Wilson'];
-    num_transactions INT := COALESCE(NULLIF(current_setting('app.num_transactions', TRUE), '')::INT, 10000000);
+    num_transactions INT := COALESCE(NULLIF(current_setting('app.num_transactions', TRUE), '')::INT, 1000000);
     num_accounts INT := num_transactions / 10;
     num_customers INT;
     rand_fn_idx INT;
@@ -120,7 +120,7 @@ BEGIN
             fn,
             ln,
             lower(fn || '.' || ln || i || '@example.com'),
-            '+380-' || lpad((10000000 + floor(random() * 90000000)::INT)::TEXT, 7, '0'),
+            '+380-' || lpad((1000000 + floor(random() * 9000000)::INT)::TEXT, 7, '0'),
             i || ' ' || ln || ' Street, City, Country'
         );
     END LOOP;
@@ -148,7 +148,7 @@ END $$;
 --------------------------------------------------------------------------------
 DO $$
 DECLARE
-    num_transactions INT := COALESCE(NULLIF(current_setting('app.num_transactions', TRUE), '')::INT, 10000000);
+    num_transactions INT := COALESCE(NULLIF(current_setting('app.num_transactions', TRUE), '')::INT, 1000000);
     account_ids INT[];
     acc_count INT;
 BEGIN
